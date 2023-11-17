@@ -134,6 +134,13 @@ body {
     display: none;
 }
 
+#controls {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-content: center;
+}
+
 #anim {
     box-sizing:border-box;
     border: 5px blue solid;

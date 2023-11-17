@@ -4,3 +4,4 @@ function toggleWorkShow() {
 }
 
 document.getElementById("show-window-button").onclick = toggleWorkShow
+document.getElementById("controls-close-button").onclick = toggleWorkShow
