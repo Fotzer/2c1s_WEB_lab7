@@ -32,6 +32,19 @@ async function animation() {
     while(true) {
         await sleep(10);
 
+        if(orangeBall.y > areaHeight/2 && blueBall.y > areaHeight/2 || orangeBall.y < areaHeight/2 && blueBall.y < areaHeight/2) {
+            break;
+        }
+
+        const distanceBetweenBalls = Math.sqrt(((orangeBall.y-10)-(blueBall.y-10))**2 + ((orangeBall.x+10)-(blueBall.x+10))**2);
+        if(distanceBetweenBalls <= 20) {
+            orangeBall.ySpeed = -orangeBall.ySpeed;
+            orangeBall.xSpeed = -orangeBall.xSpeed;
+
+            blueBall.ySpeed = -blueBall.ySpeed;
+            blueBall.xSpeed = -blueBall.xSpeed;
+        }
+
         orangeBall.ySpeed = 5 > orangeBall.y || orangeBall.y > areaHeight-25 ? -orangeBall.ySpeed : orangeBall.ySpeed;
         orangeBall.y += orangeBall.ySpeed;
 
