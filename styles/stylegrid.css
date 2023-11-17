@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+.blue {
+    background-color: #c8dcf4;
+}
+
+.div1 {
+    min-height: 25vh;
+    border: 1px black solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.x
+{
+    background-color: white;
+    border: 1px black solid;
+    width: fit-content;
+    margin-left: 30px;
+    padding: 10px;
+}
+
+.div1text {
+    margin-left: auto;
+}
+
+.midbody {
+    min-height: 50vh;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+    background-color: black;
+
+    display: grid;
+    gap: 1px;
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+
+}
+
+.div2 {
+    background-color: #ffecdc;
+    grid-row: span 3;
+    
+}
+
+.linklist {
+    padding-left: 20px;
+}
+
+.div3 {
+    background-color: #f0f4dc;
+    grid-column: span 2;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.div4 {
+    background-color: white;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    
+}
+
+.div5 {
+    background-color: #ffecdc;
+    width: 100%;
+    grid-row: span 2;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.div6 {
+    background-color: #f0f4dc;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.div7 {
+    min-height: 25vh;
+    border: 1px black solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.y {
+    background-color: white;
+    border: 1px black solid;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 30px;
+    padding: 10px 20px 10px 0;
+}
+
+.mainpageimage {
+    width: 100%;
+}
+
+.mapimage{
+    width: 150px;
+}
+
+#work {
+    position:absolute;
+    z-index:1; 
+    width: calc(40% + 10px);
+    height: calc(80% + 50px);
+    left:30%;
+    top:10%;
+    background-color:white;
+    border: 1px black solid;
+}
+
+#work.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 700px){
+    .midbody {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 3fr 1fr 1fr;
+    }
+    .div2 {
+        grid-row: 1;
+    }
+    .div3 {
+        grid-column: 1;
+    }
+    .div4 {
+        grid-row: span 1;
+    }
+    .div5 {
+        grid-row: span 1;
+    }   
+}
