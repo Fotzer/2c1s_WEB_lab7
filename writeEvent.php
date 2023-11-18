@@ -8,7 +8,7 @@ if(file_exists('log'))
 else
 {
     $fp = fopen('log', 'w');
-    fwrite($fp, $_POST['data']);  
+    fwrite($fp, $_POST['data'].' '.date("H:i:s"));  
     fclose($fp);
 }
 ?> 

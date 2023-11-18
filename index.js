@@ -145,7 +145,7 @@ async function sendEventOnServer(event, eventNum) {
 
 async function writeEventToLocalStorage(event, eventNum) {
     const data = JSON.parse(localStorage.getItem("data"));
-    data.data.push(eventNum, event, new Date().toLocaleTimeString());
+    data.data.push([eventNum, event, new Date().toLocaleTimeString()]);
     localStorage.setItem("data", JSON.stringify(data));
 }
 
@@ -180,3 +180,25 @@ function displayEvent(event, eventNum) {
     const eventDisplayer = document.getElementById("controls-event-display");
     eventDisplayer.innerText = `${eventNum} ${event}`
 }
+
+async function createTable() {
+    const localStorageData = JSON.parse(localStorage.getItem("data"));
+    console.log(localStorageData);
+    const response = await fetch("/readEvents.php");
+    console.log(response);
+    let serverData = await response.text();
+    serverData = serverData.split("\n");
+
+    const table = document.getElementById("table-container");
+    for(let i = 0; i < localStorageData.data.length; i++) {
+        table.innerHTML += `<div class="table-item">${localStorageData.data[i][0]} ${localStorageData.data[i][1]} ${localStorageData.data[i][2]}</div>`;
+        table.innerHTML += `<div class="table-item">${serverData[i]}</div>`;
+    }
+}
+
+document.getElementById("controls-close-button").addEventListener("click", createTable);
+
+window.addEventListener("load", async () => {
+    const response = await fetch("/clearLog.php");
+    console.log(response);
+});

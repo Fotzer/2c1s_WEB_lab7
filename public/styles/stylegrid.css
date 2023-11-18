@@ -36,7 +36,7 @@ body {
 
     display: grid;
     gap: 1px;
-    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-rows: 10% 80% 10%;
     grid-template-columns: 1fr 2fr 1fr;
 
 }
@@ -171,6 +171,16 @@ body {
 
 .hidden {
     display: none;
+}
+
+#table-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.table-item {
+    margin: 5px;
+    border: 1px black solid;
 }
 
 @media screen and (max-width: 700px){

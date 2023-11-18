@@ -1,0 +1,10 @@
+<?php
+if(file_exists('log')) 
+{
+    readfile("log");
+}
+else
+{
+    http_response_code(404);
+}
+?> 
