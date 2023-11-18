@@ -1,8 +1,8 @@
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function animation() {
-    const areaHeight = document.getElementById("anim").offsetHeight;
-    const areaWidth = document.getElementById("anim").offsetWidth;
+    let areaHeight = document.getElementById("anim").offsetHeight;
+    let areaWidth = document.getElementById("anim").offsetWidth;
     
     let orangeBallYSpeed = -Math.max(0.1, Math.random());
     const orangeBall = {y:areaHeight-25,
@@ -32,6 +32,9 @@ async function animation() {
     while(true) {
         await sleep(10);
 
+        areaHeight = document.getElementById("anim").offsetHeight;
+        areaWidth = document.getElementById("anim").offsetWidth;
+
         if(orangeBall.y > areaHeight/2 && blueBall.y > areaHeight/2 || orangeBall.y+20 < areaHeight/2 && blueBall.y+20 < areaHeight/2) {
             break;
         }
@@ -46,15 +49,19 @@ async function animation() {
         }
 
         orangeBall.ySpeed = 5 > orangeBall.y || orangeBall.y > areaHeight-25 ? -orangeBall.ySpeed : orangeBall.ySpeed;
+        orangeBall.y = Math.max(5, Math.min(areaHeight-25, orangeBall.y));
         orangeBall.y += orangeBall.ySpeed;
 
         orangeBall.xSpeed = 5 > orangeBall.x || orangeBall.x > areaWidth-25 ? -orangeBall.xSpeed : orangeBall.xSpeed;
+        orangeBall.x = Math.max(5, Math.min(areaWidth-25, orangeBall.x));
         orangeBall.x += orangeBall.xSpeed;
 
         blueBall.ySpeed = 5 > blueBall.y || blueBall.y > areaHeight-25 ? -blueBall.ySpeed : blueBall.ySpeed;
+        blueBall.y = Math.max(5, Math.min(areaHeight-25, blueBall.y));
         blueBall.y += blueBall.ySpeed;
 
         blueBall.xSpeed = 5 > blueBall.x || blueBall.x > areaWidth-25 ? -blueBall.xSpeed : blueBall.xSpeed;
+        blueBall.x = Math.max(5, Math.min(areaWidth-25, blueBall.x));
         blueBall.x += blueBall.xSpeed;
 
         orangeBallElement.style.bottom = orangeBall.y + "px";
