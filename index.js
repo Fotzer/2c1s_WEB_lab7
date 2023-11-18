@@ -35,6 +35,10 @@ function randomBallsPosition() {
     blueBallElement.style.left = blueBall.x + "px";
 }
 
+function showReload() {
+    document.getElementById("controls-reload-button").classList.remove("hidden");
+    document.getElementById("controls-start-button").classList.add("hidden");
+}
 
 async function animation() {
     const orangeBallElement = document.getElementById("orange-ball");
@@ -47,6 +51,7 @@ async function animation() {
         let areaWidth = document.getElementById("anim").offsetWidth;
 
         if(orangeBall.y > areaHeight/2 && blueBall.y > areaHeight/2 || orangeBall.y+20 < areaHeight/2 && blueBall.y+20 < areaHeight/2) {
+            showReload();
             break;
         }
 
@@ -83,7 +88,20 @@ async function animation() {
     }
 }
 
-document.getElementById("controls-start-button").onclick = animation;
+function reload() {
+    document.getElementById("controls-reload-button").classList.add("hidden");
+    document.getElementById("controls-start-button").classList.remove("disabled");
+    document.getElementById("controls-start-button").classList.remove("hidden");
+
+    randomBallsPosition();
+}
+
+document.getElementById("controls-reload-button").onclick = reload;
+
+document.getElementById("controls-start-button").addEventListener("click", animation);
+document.getElementById("controls-start-button").addEventListener("click", () => {
+    document.getElementById("controls-start-button").classList.add("disabled");
+});
 
 function toggleWorkShow() {
     const window = document.getElementById("work");

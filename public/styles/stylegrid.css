@@ -141,6 +141,10 @@ body {
     align-content: center;
 }
 
+.disabled {
+    pointer-events: none;
+}
+
 #anim {
     background: url(../images/1.png) top/100% 50% no-repeat, url(../images/2.png) bottom/100% 50% no-repeat;
     box-sizing:border-box;
@@ -163,6 +167,10 @@ body {
     height: 20px;
     background-color: #00d2ff;
     border-radius: 30px;
+}
+
+.hidden {
+    display: none;
 }
 
 @media screen and (max-width: 700px){
