@@ -1,18 +1,25 @@
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-async function animation() {
+
+let orangeBall = {};
+
+
+let blueBall = {};
+
+
+function randomBallsPosition() {
     let areaHeight = document.getElementById("anim").offsetHeight;
     let areaWidth = document.getElementById("anim").offsetWidth;
     
-    let orangeBallYSpeed = -Math.max(0.1, Math.random());
-    const orangeBall = {y:areaHeight-25,
+    orangeBallYSpeed = -Math.max(0.1, Math.random());
+    orangeBall = {y:areaHeight-25,
         x:Math.max(5, Math.min(areaWidth-25, Math.random()*areaWidth)),
         ySpeed: orangeBallYSpeed,
         xSpeed: (Math.round(Math.random()) * 2 - 1) * (1 - orangeBallYSpeed**2)
     };
     
-    let blueBallYSpeed = Math.max(0.1, Math.random());
-    const blueBall = {y:5,
+    blueBallYSpeed = Math.max(0.1, Math.random());
+    blueBall = {y:5,
         x:Math.max(5, Math.min(areaWidth-25, Math.random()*areaWidth)),
         ySpeed: blueBallYSpeed,
         xSpeed: (Math.round(Math.random()) * 2 - 1) * (1 - blueBallYSpeed**2)
@@ -21,19 +28,23 @@ async function animation() {
     const orangeBallElement = document.getElementById("orange-ball");
     const blueBallElement = document.getElementById("blue-ball");
 
-    console.log(orangeBall.y);
-    console.log(blueBall.y);
     orangeBallElement.style.bottom = orangeBall.y + "px";
     orangeBallElement.style.left = orangeBall.x + "px";
     
     blueBallElement.style.bottom = blueBall.y + "px";
     blueBallElement.style.left = blueBall.x + "px";
+}
+
+
+async function animation() {
+    const orangeBallElement = document.getElementById("orange-ball");
+    const blueBallElement = document.getElementById("blue-ball");
 
     while(true) {
         await sleep(10);
 
-        areaHeight = document.getElementById("anim").offsetHeight;
-        areaWidth = document.getElementById("anim").offsetWidth;
+        let areaHeight = document.getElementById("anim").offsetHeight;
+        let areaWidth = document.getElementById("anim").offsetWidth;
 
         if(orangeBall.y > areaHeight/2 && blueBall.y > areaHeight/2 || orangeBall.y+20 < areaHeight/2 && blueBall.y+20 < areaHeight/2) {
             break;
@@ -72,11 +83,14 @@ async function animation() {
     }
 }
 
+document.getElementById("controls-start-button").onclick = animation;
+
 function toggleWorkShow() {
     const window = document.getElementById("work");
     window.classList.toggle("hidden")
-    animation();
 }
 
-document.getElementById("show-window-button").onclick = toggleWorkShow;
+document.getElementById("show-window-button").addEventListener("click", toggleWorkShow);
+document.getElementById("show-window-button").addEventListener("click", randomBallsPosition);
+
 document.getElementById("controls-close-button").onclick = toggleWorkShow;
