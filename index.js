@@ -11,18 +11,18 @@ function randomBallsPosition() {
     let areaHeight = document.getElementById("anim").offsetHeight;
     let areaWidth = document.getElementById("anim").offsetWidth;
     
-    orangeBallYSpeed = -Math.max(0.1, Math.random());
+    orangeBallYSpeed = -Math.max(0.1, Math.random())*3;
     orangeBall = {y:areaHeight-25,
         x:Math.max(5, Math.min(areaWidth-25, Math.random()*areaWidth)),
         ySpeed: orangeBallYSpeed,
-        xSpeed: (Math.round(Math.random()) * 2 - 1) * (1 - orangeBallYSpeed**2)
+        xSpeed: (Math.round(Math.random()) * 2 - 1) * Math.sqrt(9 - orangeBallYSpeed**2)
     };
     
-    blueBallYSpeed = Math.max(0.1, Math.random());
+    blueBallYSpeed = Math.max(0.1, Math.random())*3;
     blueBall = {y:5,
         x:Math.max(5, Math.min(areaWidth-25, Math.random()*areaWidth)),
         ySpeed: blueBallYSpeed,
-        xSpeed: (Math.round(Math.random()) * 2 - 1) * (1 - blueBallYSpeed**2)
+        xSpeed: (Math.round(Math.random()) * 2 - 1) * Math.sqrt(9 - blueBallYSpeed**2)
     };
     
     const orangeBallElement = document.getElementById("orange-ball");
